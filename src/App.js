@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import JobStoryList from './components/JobStoryList';
 import './App.css';
+import jobStoriesData from './data.json';
 
 class App extends Component {
   render() {
@@ -35,7 +36,7 @@ class App extends Component {
             </nav>
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
               <h2>Job Stories</h2>
-              <JobStoryList/>
+              <JobStoryList data={jobStoriesData} />
             </main>
           </div>
         </div>

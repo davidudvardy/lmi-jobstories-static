@@ -6,15 +6,19 @@ class JobStoryList extends Component {
         super(props);
 
         this.state = {
-            something: null,
+            filteredJobStoryList: props.data.jobs,
         };
     }
 
     render() {
         return (
+            this.state.filteredJobStoryList.map(job => (
             <div>
-                <Card text="etwas" type="context"/>
+                <Card text={job.context} type="context"/>
+                <Card text={job.motivation} type="motivation"/>
+                <Card text={job.outcome} type="outcome"/>
             </div>
+            ))
         )
     }
 }
