@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Card from './Card/Card'
+import JobStoryList from './components/JobStoryList';
+import './App.css';
 
 class App extends Component {
   render() {
@@ -8,6 +9,11 @@ class App extends Component {
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Job Stories</a>
           <input className="form-control form-control-dark w-100" type="text" placeholder="Search" />
+          <ul className="navbar-nav px-3">
+            <li className="nav-item text-nowrap">
+              <a className="nav-link" href="#">Sign out</a>
+            </li>
+          </ul>
         </nav>
         <div className="container-fluid">
           <div className="row">
@@ -29,7 +35,7 @@ class App extends Component {
             </nav>
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
               <h2>Job Stories</h2>
-              <Card/>
+              <JobStoryList/>
             </main>
           </div>
         </div>
