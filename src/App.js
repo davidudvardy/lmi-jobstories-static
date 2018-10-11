@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
 
     this.getState = this.getState.bind(this);
+    this.setState = this.setState.bind(this);
 
     this.state = {
       jobStoryFilter: "",

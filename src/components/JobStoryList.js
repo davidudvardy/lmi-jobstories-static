@@ -7,7 +7,7 @@ class JobStoryList extends Component {
     }
 
     handleChange = (event) => {
-        let list = this.state.getParentState().originalJobStoryList;
+        let list = this.props.getParentState().originalJobStoryList;
         let pattern = event.target.value.toLowerCase();
         list = list.filter(job => job.context.toLowerCase().search(pattern) !== -1 || job.motivation.toLowerCase().search(pattern) !== -1 || job.outcome.toLowerCase().search(pattern) !== -1 );
         this.props.setParentState({
