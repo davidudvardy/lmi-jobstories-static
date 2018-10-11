@@ -13,17 +13,13 @@ class JobStoryList extends Component {
     }
     
     componentDidMount() {
-        document.getElementById("filter").onchange = this.handleChange;
+        document.getElementById("filter").oninput = this.handleChange;
     }
 
     handleChange = (event) => {
         let list = this.state.originalJobStoryList;
         let pattern = event.target.value.toLowerCase();
-        list = list.filter(function(job) {
-            return job.context.toLowerCase().search(pattern) !== -1 || 
-                job.motivation.toLowerCase().search(pattern) !== -1 || 
-                job.outcome.toLowerCase().search(pattern) !== -1;
-        });
+        list = list.filter(job => job.context.toLowerCase().search(pattern) !== -1 || job.motivation.toLowerCase().search(pattern) !== -1 || job.outcome.toLowerCase().search(pattern) !== -1 );
         this.setState({
             jobStoryFilter: event.target.value,
             filteredJobStoryList: list
@@ -33,7 +29,7 @@ class JobStoryList extends Component {
     render() {
         return (
             this.state.filteredJobStoryList.map(job => (
-                <div>
+                <div className="list-group flex-row" style={{marginBottom: 10 + 'px'}}>
                     <Card text={job.context} type="context"/>
                     <Card text={job.motivation} type="motivation"/>
                     <Card text={job.outcome} type="outcome"/>
