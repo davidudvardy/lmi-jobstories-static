@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 class SideBar extends Component {
     constructor(props) {
@@ -18,11 +18,11 @@ class SideBar extends Component {
                     <ul className="nav flex-column">
                         {this.state.products.map(product => (
                             <li className="nav-item">
-                                <Link to={'/product/' + product.key} id={product.key}>{product.title}</Link>
+                                <NavLink to={'/product/' + product.key} activeClassName="selected">{product.title}</NavLink>
                                 <ul>
                                     {product.usertypes.map(usertype => (
                                         <li className="nav-item">
-                                            <Link to={'/usertype/' + usertype.key} id={usertype.key}>{usertype.title}</Link>
+                                            <NavLink to={'/usertype/' + usertype.key} activeClassName="selected">{usertype.title}</NavLink>
                                         </li>
                                     ))}
                                 </ul>

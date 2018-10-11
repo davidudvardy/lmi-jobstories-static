@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import JobStoryList from './components/JobStoryList';
 import SideBar from './components/SideBar';
 import './App.css';
@@ -23,6 +23,9 @@ class App extends Component {
   // TODO: componentDidMount() is not invoked on URL change!!! Create function to do work and call it on URL change too?
   //
   componentDidMount() {
+    this.props.history.listen(() => {
+      this.handleURLChange();
+    });
     this.handleURLChange();
   }
   
@@ -30,7 +33,6 @@ class App extends Component {
     let type = new URL(document.URL).pathname.split('/')[1] || "home";
     let jobs = this.state.originalJobStoryList;
     let key = new URL(document.URL).pathname.split('/')[2] || "home";
-    document.getElementById(key).className += " selected";
 
     switch (type) {
       case 'product':
@@ -84,4 +86,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
