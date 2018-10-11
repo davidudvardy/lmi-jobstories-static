@@ -24,3 +24,7 @@
     position: sticky;
   }
 }
+
+.nav-item a.selected {
+  font-weight: bold;
+}

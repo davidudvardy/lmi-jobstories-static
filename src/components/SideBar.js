@@ -18,11 +18,11 @@ class SideBar extends Component {
                     <ul className="nav flex-column">
                         {this.state.products.map(product => (
                             <li className="nav-item">
-                                <Link to={'/product/' + product.key}>{product.title}</Link>
+                                <Link to={'/product/' + product.key} id={product.key}>{product.title}</Link>
                                 <ul>
                                     {product.usertypes.map(usertype => (
                                         <li className="nav-item">
-                                            <Link to={'/usertype/' + usertype.key}>{usertype.title}</Link>
+                                            <Link to={'/usertype/' + usertype.key} id={usertype.key}>{usertype.title}</Link>
                                         </li>
                                     ))}
                                 </ul>
