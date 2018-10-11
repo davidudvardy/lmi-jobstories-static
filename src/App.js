@@ -14,15 +14,12 @@ class App extends Component {
     this.setState = this.setState.bind(this);
 
     this.state = {
-      jobStoryFilter: "",
       originalJobStoryList: jobStoriesData.jobs,
       filteredJobStoryList: [],
+      renderedJobStoryList: [],
     }
   }
 
-  //
-  // TODO: componentDidMount() is not invoked on URL change!!! Create function to do work and call it on URL change too?
-  //
   componentDidMount() {
     this.props.history.listen(() => {
       this.handleURLChange();
@@ -34,6 +31,9 @@ class App extends Component {
     let type = new URL(document.URL).pathname.split('/')[1] || "home";
     let jobs = this.state.originalJobStoryList;
     let key = new URL(document.URL).pathname.split('/')[2] || "home";
+
+    // Reset search field on URL change
+    document.getElementById("filter").value = "";
 
     switch (type) {
       case 'product':
@@ -54,6 +54,7 @@ class App extends Component {
     
     this.setState({
       filteredJobStoryList: jobs,
+      renderedJobStoryList: jobs,
     });
   }
 
@@ -78,7 +79,7 @@ class App extends Component {
             <SideBar data={productData} />
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
               <h2>Job Stories</h2>
-              <JobStoryList data={this.state.filteredJobStoryList} setParentState={this.setState} getParentState={this.getState} />
+              <JobStoryList data={this.state.renderedJobStoryList} setParentState={this.setState} getParentState={this.getState} />
             </main>
           </div>
         </div>
