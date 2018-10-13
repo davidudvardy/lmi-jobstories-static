@@ -100,11 +100,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.error);
-    if(this.state.error) {
-      return (<h4>Error loading JSON data: {this.state.error.message}</h4>);
-    } else if (!this.state.isLoaded) {
-      return (<h4>Loading data...</h4>);
+    const {originalJobStoryList, filteredJobStoryList, renderedJobStoryList, productData, isLoaded, error} = this.state;
+    if(error) {
+      return (<h5>Error loading JSON data: {error.message}</h5>);
+    } else if (!isLoaded) {
+      return (<h5>Loading data...</h5>);
     } else {
       return (
         <div>
@@ -112,17 +112,15 @@ class App extends Component {
             <Link id="home" className="navbar-brand col-sm-3 col-md-2 mr-0" to="/">Job Stories</Link>
             <input className="form-control form-control-dark w-100" id="filter" type="text" placeholder="Search job stories..." />
             <ul className="navbar-nav px-3">
-              <li className="nav-item text-nowrap">
-                <a className="nav-link">Sign out</a>
-              </li>
+              <li className="nav-item text-nowrap"><a className="nav-link">Sign out</a></li>
             </ul>
           </nav>
           <div className="container-fluid">
             <div className="row">
-              <SideBar data={this.state.productData} />
+              <SideBar data={productData} />
               <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <h2>Job Stories</h2>
-                <JobStoryList data={this.state.renderedJobStoryList} setParentState={this.setState} getParentState={this.getState} />
+                <JobStoryList data={renderedJobStoryList} setParentState={this.setState} getParentState={this.getState} />
               </main>
             </div>
           </div>
