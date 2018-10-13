@@ -74,17 +74,19 @@ class App extends Component {
       case 'product':
         jobs = jobs.filter(function (job) {
           return job.products.findIndex(function (p) {
-            return p != key;
+            return p !== key;
           });
         });
         break;
       case 'usertype':
         jobs = jobs.filter(function (job) {
           return job.userTypes.findIndex(function (u) {
-            return u != key;
+            return u !== key;
           });
         });
         break;
+      default:
+        // leave 'jobs' unaffected in any other cases
     }
     
     this.setState({
