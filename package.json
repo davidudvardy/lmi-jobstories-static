@@ -10,6 +10,7 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   }
 }
