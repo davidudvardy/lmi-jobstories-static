@@ -23,7 +23,7 @@ class App extends Component {
 
   componentDidMount() {
     // Load job stories and update lists right after it
-    fetch("https://api.myjson.com/bins/y9284")
+    fetch("/api/jobstories")
       .then(r => r.json())
       .then(
         (jobStoriesData) => {
@@ -44,7 +44,7 @@ class App extends Component {
         },
       );
     // Load product and usertype categories
-    fetch("https://api.myjson.com/bins/km8h0")
+    fetch("/api/categories")
       .then(r => r.json())
       .then(
         (productData) => {
