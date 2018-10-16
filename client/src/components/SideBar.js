@@ -11,9 +11,9 @@ class SideBar extends Component {
                             <li className="nav-item">
                                 <NavLink to={'/product/' + product.key} activeClassName="selected">{product.title}</NavLink>
                                 <ul>
-                                    {product.usertypes.map(usertype => (
+                                    {product.usertypes.map(userType => (
                                         <li className="nav-item">
-                                            <NavLink to={'/usertype/' + usertype.key} activeClassName="selected">{usertype.title}</NavLink>
+                                            <NavLink to={'/usertype/' + userType.key} activeClassName="selected">{userType.title}</NavLink>
                                         </li>
                                     ))}
                                 </ul>

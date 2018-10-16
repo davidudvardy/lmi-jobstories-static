@@ -28,7 +28,7 @@ class App extends Component {
       .then(
         (jobStoriesData) => {
           this.setState({
-            originalJobStoryList: jobStoriesData.jobs,
+            originalJobStoryList: jobStoriesData,
             isLoaded: true,
           });
           this.props.history.listen(() => {
@@ -49,7 +49,7 @@ class App extends Component {
       .then(
         (productData) => {
           this.setState({
-            productData: productData.products,
+            productData: productData,
             isLoaded: true,
           });
         },
@@ -73,16 +73,12 @@ class App extends Component {
     switch (type) {
       case 'product':
         jobs = jobs.filter(function (job) {
-          return job.products.findIndex(function (p) {
-            return p !== key;
-          });
+          return job.product == key;
         });
         break;
       case 'usertype':
         jobs = jobs.filter(function (job) {
-          return job.userTypes.findIndex(function (u) {
-            return u !== key;
-          });
+          return job.usertypes.includes(key);
         });
         break;
       default:
